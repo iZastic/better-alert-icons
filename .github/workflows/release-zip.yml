@@ -21,4 +21,4 @@ jobs:
       - name: Release files
         run: gh release create ${{ github.ref_name }} better-alert-icons_${{ github.refname }}.zip --generate-notes
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
