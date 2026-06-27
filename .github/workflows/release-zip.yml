@@ -17,7 +17,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Zip files
-        run: git archive --format=zip HEAD > better-alert-icons_${{ github.ref_name }}.zip
+        run: |
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#v}"
+          FILENAME=better-alert-icons_${VERSION}
+          git archive --format=zip --prefix=${FILENAME} HEAD > ${FILENAME}.zip
 
       - name: Release files
         run: gh release create ${{ github.ref_name }} better-alert-icons_${{ github.ref_name }}.zip --generate-notes
