@@ -1,0 +1,11 @@
+{
+  "name": "better-alert-icons",
+  "version": "1.0.0",
+  "title": "Better Alert Icons",
+  "description": "Change alert icon size and move them where you want them!",
+  "author": "iZastic",
+  "factorio_version": "2.1",
+  "dependencies": [
+    "base >= 2.0"
+  ]
+}
