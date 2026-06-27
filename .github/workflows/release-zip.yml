@@ -21,7 +21,7 @@ jobs:
           TAG="${{ github.ref_name }}"
           VERSION="${TAG#v}"
           FILENAME=better-alert-icons_${VERSION}
-          git archive --format=zip --prefix=${FILENAME} HEAD > ${FILENAME}.zip
+          git archive --format=zip --prefix=${FILENAME}/ HEAD > ${FILENAME}.zip
 
       - name: Release files
         run: |
