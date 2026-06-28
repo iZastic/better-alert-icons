@@ -1,6 +1,6 @@
 # Better Alert Icons
 
-Customize the size and screen position of alert icons in Factorio.
+Customize the size and position of alert icons on buildings in Factorio.
 
 ### Features
 
