@@ -13,10 +13,23 @@ bai = {
     icon_scale = icon_scale
 }
 
+-- Check whether a value contains two numeric coordinates
+---@param value any
+---@return boolean
+local function is_position(value)
+    return type(value) == "table"
+        and type(value[1]) == "number"
+        and type(value[2]) == "number"
+end
+
 -- Get width and height in pixels from selection box
 ---@param box data.BoundingBox.struct
----@return number, number
+---@return number|nil, number|nil
 bai.get_selection_size = function(box)
+    if type(box) ~= "table" or not is_position(box[1]) or not is_position(box[2]) then
+        return nil, nil
+    end
+
     return math.abs(box[2][1] - box[1][1]), math.abs(box[2][2] - box[1][2])
 end
 
@@ -51,9 +64,16 @@ end
 
 -- Updates the alert icon shift for the prototype
 ---@param prototype data.EntityPrototype
+---@return boolean # false when selection_box is malformed; true when handled
 bai.update_alert_icon_shift = function(prototype)
     if icon_h_pos ~= "center" or icon_v_pos ~= "center" then
         local width, height = bai.get_selection_size(prototype.selection_box)
+        if width == nil or height == nil then
+            return false
+        end
+
         prototype.alert_icon_shift = bai.get_icon_shift({ width, height }, prototype.alert_icon_shift or { 0, 0 })
     end
+
+    return true
 end

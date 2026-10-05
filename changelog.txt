@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2026-10-04
+  Bugfixes:
+    - Skip alert-icon positioning for prototypes with invalid selection boxes instead of failing during startup.
+    - Log the category and name of each affected prototype.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2026-06-27
   Features:
